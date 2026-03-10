@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React to HTML Converter</title>
+    <style>
+        /* CSS STYLES */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+
+        .counter-display {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #007bff;
+            margin: 1rem 0;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-decrease {
+            background-color: #ff4d4d;
+            color: white;
+        }
+        .btn-decrease:hover { background-color: #e60000; }
+
+        .btn-reset {
+            background-color: #6c757d;
+            color: white;
+        }
+        .btn-reset:hover { background-color: #545b62; }
+
+        .btn-increase {
+            background-color: #28a745;
+            color: white;
+        }
+        .btn-increase:hover { background-color: #218838; }
+    </style>
+</head>
+<body>
+
+    <!-- HTML STRUCTURE -->
+    <div class="card">
+        <h1>Counter</h1>
+        <div id="counter-value" class="counter-display">0</div>
+        <div class="button-group">
+            <button id="btn-decrease" class="btn-decrease">-</button>
+            <button id="btn-reset" class="btn-reset">Reset</button>
+            <button id="btn-increase" class="btn-increase">+</button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // 1. Select DOM elements (like React's useRef or just accessing state)
+        const displayElement = document.getElementById('counter-value');
+        const btnDecrease = document.getElementById('btn-decrease');
+        const btnReset = document.getElementById('btn-reset');
+        const btnIncrease = document.getElementById('btn-increase');
+
+        // 2. Initialize State
+        let count = 0;
+
+        // 3. Create a render function (like React's return statement)
+        function render() {
+            displayElement.textContent = count;
+        }
+
+        // 4. Event Listeners (like onClick)
+        btnDecrease.addEventListener('click', () => {
+            count--;
+            render();
+        });
+
+        btnIncrease.addEventListener('click', () => {
+            count++;
+            render();
+        });
+
+        btnReset.addEventListener('click', () => {
+            count = 0;
+            render();
+        });
+
+        // Initial render
+        render();
+    </script>
+</body>
+</html>
